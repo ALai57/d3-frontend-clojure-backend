@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+</head>
+<body>
+<p>
+    Loading data from the web!
+</p>
+
+<label for="input_day"
+          style="display: inline-block; width: 140px; ">
+    Get random data sample
+  </label>
+<form id="input_day_form" method="post" onsubmit="return false;">
+  <!-- -- <input id="day_input_text" type="text" name="fname" value="2018-08-01"><br> -->
+  <input id="input_day_form_submit" type="submit" value="Go!" onclick="make_days_graph()">
+</form>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="initialize_figure.js"></script>
