@@ -5,16 +5,17 @@
 <body>
 <p>
     This simple application requests data from an endpoint and plots it when the data is sent!
+</p>
+<p>
     The endpoint is run using a Clojure package - compojure, and the front end is D3.
 </p>
 
-<label for="input_day"
+<!-- <label for="input_day"
           style="display: inline-block; width: 140px; ">
     Get random data sample
-  </label>
+  </label> -->
 <form id="input_day_form" method="post" onsubmit="return false;">
-  <!-- -- <input id="day_input_text" type="text" name="fname" value="2018-08-01"><br> -->
-  <input id="input_day_form_submit" type="submit" value="Go!" onclick="make_days_graph()">
+  <input id="input_day_form_submit" type="submit" value="Get data!" onclick="make_days_graph()" style="width:200px;height:80px;background-color:aliceblue;font-weight:bold;font-size:20px;margin-left:150px">
 </form>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="initialize_figure.js"></script>
