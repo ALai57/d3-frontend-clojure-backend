@@ -6,17 +6,16 @@
 (use 'ring.util.json-response)
 
 (defn random-number-generator [n mx]
-     [(take n (repeatedly #(rand-int mx)))] )
+     (take n (repeatedly #(rand-int mx))) )
+
+(defn create-row [mx]
+  {:x (rand-int mx) :y (rand-int mx)})
 
 (defroutes app-routes
 
   (GET "/" [] "Hello World")
   (GET "/get_sample_dataset" []
-    (json-response (apply map vector [(random-number-generator 10 10)
-                                      (random-number-generator 10 10) ])
-
-                       )
-    )
+    (json-response (take 10 (repeatedly #(create-row 5))) ) )
   (route/not-found "Not Found"))
 
 (def app
@@ -26,4 +25,6 @@
   ;                    [:d :e :f]
   ;                    [:g :h :i]])
 
+  ; (json-response (apply map vector [(random-number-generator 10 10)
+  ;                                   (random-number-generator 10 10) ])
   ; (json-response {:n (rand-int 10)})

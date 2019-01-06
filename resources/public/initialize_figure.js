@@ -75,47 +75,10 @@ for (i = 0; i < n_graphs; i++) {
 
 
 
-// Define area plots
-var area_best_worst_05 = d3.svg.area()
-	.x(function(d) {return x(d.hours_since_ba); })
-  	.y0(function(d) { return y(+d.worst_05_percentile); })
-  	.y1(function(d) { return y(+d.best_05_percentile); });
-
-var area_best_worst_10 = d3.svg.area()
-	.x(function(d) {return x(+d.hours_since_ba); })
-  	.y0(function(d) { return y(+d.worst_10_percentile); })
-  	.y1(function(d) { return y(+d.best_10_percentile); });
-
-
-// Define daily lines
-var daily_data1 = d3.svg.line()
-	.x(function(d) {return x(+d.hours_since_ba); })
-	.y(function(d) { return y(+d.day1); });
-
-var daily_data2 = d3.svg.line()
-	.x(function(d) {return x(+d.hours_since_ba); })
-	.y(function(d) { return y(+d.day2); });
-
-var daily_data3 = d3.svg.line()
-	.x(function(d) {return x(+d.hours_since_ba); })
-	.y(function(d) { return y(+d.day3); });
-
-var daily_data4 = d3.svg.line()
-	.x(function(d) {return x(+d.hours_since_ba); })
-	.y(function(d) { return y(+d.day4); });
-
-var daily_data5 = d3.svg.line()
-	.x(function(d) {return x(+d.hours_since_ba); })
-	.y(function(d) { return y(+d.day5); });
-
-var daily_data6 = d3.svg.line()
-	.x(function(d) {return x(+d.hours_since_ba); })
-	.y(function(d) { return y(+d.day6); });
-
 function plot_data() {
   return d3.svg.line()
-  	.x(function(d) {return x(+d[0]); })
-  	.y(function(d) {return y(+d[1]); });
+  	.x(function(d) {return x(+d.x); })
+  	.y(function(d) {return y(+d.y); });
 }
 
 
@@ -129,30 +92,38 @@ function make_days_graph() {
   update_data = data_url()
 
   d3.json(update_data, function(linedata) {
-      // console.log(linedata);
+      console.log(linedata);
 
 
-      console.log(linedata[0])
-      console.log(linedata[0][0]) // X
-      console.log(linedata[0][1]) // Y
+      // console.log(linedata[0])
+      // console.log(linedata[0][0]) // X
+      // console.log(linedata[0][1]) // Y
 
       // console.log(d3.select("#svg_0"))
 
-      //Line graph
+      // Line graph
       // var line= d3.select("#svg_0").selectAll("line").attr("stroke", "blue")
       //             .attr("stroke-width", 2)
       //             .attr("fill", "none")
       //             .style("opacity", 0)
-      //             .data(linedata[0])
+      //             .data(linedata)
       //             .enter()
       //             .append("line")
-      //
-      //
+
+
       // d3.select("#svg_0").append("path")
-      //          .data(linedata[0])
+      //          .data(linedata)
       //          .attr("class", "line")
       //          .attr("d", plot_data);
 
+      console.log(plot_data(linedata))
+
+
+     svg.append('svg:path')
+           .attr('d', plot_data)
+           .attr('stroke', 'blue')
+           .attr('stroke-width', 2)
+           .attr('fill', 'none');
 
       // line.transition()
       //   .duration(1000)
