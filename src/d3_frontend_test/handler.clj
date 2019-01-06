@@ -13,7 +13,7 @@
 
 (defroutes app-routes
 
-  (GET "/" [] "Hello World")
+  (GET "/" [] "Hello World! Try adding .index, or /get_sample_dataset")
   (GET "/get_sample_dataset" []
     (json-response (take 10 (repeatedly #(create-row 10))) ) )
   (route/not-found "Not Found"))

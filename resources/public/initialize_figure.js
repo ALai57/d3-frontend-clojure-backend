@@ -1,7 +1,8 @@
 
 
-// The base endpoint to receive data from. See update_url()
-var URL_BASE = "http://127.0.0.1:3000/get_sample_dataset";
+// The endpoint to receive data from
+var URL_BASE = window.location.origin + "/get_sample_dataset";
+//http://127.0.0.1:3000
 
 var margin = {top: 20, right: 20, bottom: 100, left: 60};
 var width = 600 - margin.left - margin.right;
@@ -105,54 +106,4 @@ function make_days_graph() {
 
     });
 
-
 }
-
-
-
-
-
-// function make_days_graph() {
-//   update_data = data_url()
-//
-//   d3.json(update_data, function(linedata) {
-//       console.log(linedata);
-//
-//
-//       // console.log(linedata[0])
-//       // console.log(linedata[0][0]) // X
-//       // console.log(linedata[0][1]) // Y
-//
-//       // console.log(d3.select("#svg_0"))
-//
-//       // Line graph
-//       // var line= d3.select("#svg_0").selectAll("line").attr("stroke", "blue")
-//       //             .attr("stroke-width", 2)
-//       //             .attr("fill", "none")
-//       //             .style("opacity", 0)
-//       //             .data(linedata)
-//       //             .enter()
-//       //             .append("line")
-//
-//
-//       // d3.select("#svg_0").append("path")
-//       //          .data(linedata)
-//       //          .attr("class", "line")
-//       //          .attr("d", plot_data);
-//
-//       console.log(linefunction(linedata))
-//
-//
-//      svg.append('svg:path')
-//            .attr('d', linefunction(linedata))
-//            .attr('stroke', 'blue')
-//            .attr('stroke-width', 2)
-//            .attr('fill', 'none');
-//
-//       // line.transition()
-//       //   .duration(1000)
-//       //   .attr("d", plot_data(linedata[0]) )
-//         // .attr("d", daily_data1(linedata[thekey]));
-//
-//     });
-// }
