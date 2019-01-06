@@ -15,7 +15,7 @@
 
   (GET "/" [] "Hello World")
   (GET "/get_sample_dataset" []
-    (json-response (take 10 (repeatedly #(create-row 5))) ) )
+    (json-response (take 10 (repeatedly #(create-row 10))) ) )
   (route/not-found "Not Found"))
 
 (def app

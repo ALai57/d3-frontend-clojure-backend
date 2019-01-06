@@ -75,11 +75,14 @@ for (i = 0; i < n_graphs; i++) {
 
 
 
-function plot_data() {
-  return d3.svg.line()
+linefunction = d3.svg.line()
   	.x(function(d) {return x(+d.x); })
   	.y(function(d) {return y(+d.y); });
-}
+
+line = svg.append('svg:path')
+        .attr('stroke', 'blue')
+        .attr('stroke-width', 2)
+        .attr('fill', 'none');
 
 
 // Return url to recieve data
@@ -93,42 +96,63 @@ function make_days_graph() {
 
   d3.json(update_data, function(linedata) {
       console.log(linedata);
+      console.log(linefunction);
+      console.log(linefunction(linedata));
 
-
-      // console.log(linedata[0])
-      // console.log(linedata[0][0]) // X
-      // console.log(linedata[0][1]) // Y
-
-      // console.log(d3.select("#svg_0"))
-
-      // Line graph
-      // var line= d3.select("#svg_0").selectAll("line").attr("stroke", "blue")
-      //             .attr("stroke-width", 2)
-      //             .attr("fill", "none")
-      //             .style("opacity", 0)
-      //             .data(linedata)
-      //             .enter()
-      //             .append("line")
-
-
-      // d3.select("#svg_0").append("path")
-      //          .data(linedata)
-      //          .attr("class", "line")
-      //          .attr("d", plot_data);
-
-      console.log(plot_data(linedata))
-
-
-     svg.append('svg:path')
-           .attr('d', plot_data)
-           .attr('stroke', 'blue')
-           .attr('stroke-width', 2)
-           .attr('fill', 'none');
-
-      // line.transition()
-      //   .duration(1000)
-      //   .attr("d", plot_data(linedata[0]) )
-        // .attr("d", daily_data1(linedata[thekey]));
+   line.transition()
+     .duration(1000)
+     .attr('d', linefunction(linedata) );
 
     });
+
+
 }
+
+
+
+
+
+// function make_days_graph() {
+//   update_data = data_url()
+//
+//   d3.json(update_data, function(linedata) {
+//       console.log(linedata);
+//
+//
+//       // console.log(linedata[0])
+//       // console.log(linedata[0][0]) // X
+//       // console.log(linedata[0][1]) // Y
+//
+//       // console.log(d3.select("#svg_0"))
+//
+//       // Line graph
+//       // var line= d3.select("#svg_0").selectAll("line").attr("stroke", "blue")
+//       //             .attr("stroke-width", 2)
+//       //             .attr("fill", "none")
+//       //             .style("opacity", 0)
+//       //             .data(linedata)
+//       //             .enter()
+//       //             .append("line")
+//
+//
+//       // d3.select("#svg_0").append("path")
+//       //          .data(linedata)
+//       //          .attr("class", "line")
+//       //          .attr("d", plot_data);
+//
+//       console.log(linefunction(linedata))
+//
+//
+//      svg.append('svg:path')
+//            .attr('d', linefunction(linedata))
+//            .attr('stroke', 'blue')
+//            .attr('stroke-width', 2)
+//            .attr('fill', 'none');
+//
+//       // line.transition()
+//       //   .duration(1000)
+//       //   .attr("d", plot_data(linedata[0]) )
+//         // .attr("d", daily_data1(linedata[thekey]));
+//
+//     });
+// }
